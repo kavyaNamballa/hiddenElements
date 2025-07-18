@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Non-Clickable Button Example</title>
   <style>
-    #realButton {
+    #visibilityTest {
       position: absolute;
       top: 100px;
       left: 100px;
@@ -12,9 +12,25 @@
       height: 50px;
     }
 
-    #overlay {
+    #overlay1 {
       position: absolute;
       top: 200px;
+      left: 100px;
+      width: 200px;
+      height: 50px;
+    }
+
+    #disableTest {
+      position: absolute;
+      top: 300px;
+      left: 100px;
+      width: 200px;
+      height: 50px;
+    }
+
+    #overlay2 {
+      position: absolute;
+      top: 400px;
       left: 100px;
       width: 200px;
       height: 50px;
@@ -23,16 +39,27 @@
 </head>
 <body>
 
-  <!-- The actual button -->
-  <button id="realButton" onclick="hideButton()">Click Me</button>
+  <button id="visibilityTest" onclick="hideButton()">Click Me To test visibility</button>
 
+  <button id="disableTest" onclick="disableButton()">Click Me To test enability</button>
 
-  <!-- Transparent overlay -->
-  <button id="overlay"></button>
+  <button id="overlay1">Visible</button>
+
+  <button id="overlay2">Enabled</button>
 
   <script>
     function hideButton() {
-      document.getElementById('overlay').style.display = 'none';
+      const overlayButton1 = document.getElementById('overlay1');
+      if (overlayButton1.style.display != 'none')
+        overlayButton1.style.display = 'none';
+      else 
+      overlayButton1.style.display = 'block';
+    } 
+
+    function disableButton() {
+      const overlayButton2 = document.getElementById('overlay2');
+      if(overlayButton2.disabled) overlayButton2.disabled = false;
+      else overlayButton2.disabled = true;
     }
   </script>
 
